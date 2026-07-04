@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament.pk - Ultimate Esports Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0c;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* Color Palette */
+        :root {
+            --primary: #FFC107; /* Amber Gold */
+            --dark-bg: #121214;
+            --card-bg: #1c1c1f;
+            --text-muted: #aaa;
+        }
+
+        .amber-text { color: var(--primary); }
+        .bg-amber { background-color: var(--primary); color: #000; }
+
+        /* Navbar */
+        header {
+            background-color: #000000;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(18,18,20,1)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 10px auto 0 auto;
+        }
+
+        /* Grid / Match Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid #2d2d31;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .match-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Leaderboard Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #2d2d31;
+        }
+
+        th {
+            background-color: #000;
+            color: var(--primary);
+        }
+
+        tr:hover {
+            background-color: #242428;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">TOURNAMENT<span class="amber-text">.PK</span></div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#matches">Matches</a>
+            <a href="#leaderboard">Leaderboard</a>
+            <a href="#support">Support</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Welcome to <span class="amber-text">Tournament.pk</span></h1>
+        <p>Pakistan's ultimate battleground for esports players. Join standard grids, showcase your skills, and win exciting coin rewards!</p>
+        <a href="#matches" class="btn bg-amber">View Tournaments</a>
+    </section>
+
+    <!-- Matches Section -->
+    <section id="matches" class="section">
+        <h2 class="section-title">Live & Upcoming Matches</h2>
+        <div class="grid">
+            
+            <!-- Card 1 -->
+            <div class="card">
+                <h3>Clash Squad Battle</h3>
+                <p>Standard 4v4 CS tournament grid. Limited slots available.</p>
+                <div class="match-details">
+                    <span>Entry Fee: <b>15 Coins</b></span>
+                    <span class="amber-text">Prize: <b>100 Coins</b></span>
+                </div>
+                <button class="btn bg-amber" style="width: 100%; padding: 10px;" onclick="alert('Registration opening soon on our upcoming APK!')">Join Match</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <h3>Per Kill Rush</h3>
+                <p>Earn fixed coins for every single target you eliminate in the lobby.</p>
+                <div class="match-details">
+                    <span>Entry Fee: <b>10 Coins</b></span>
+                    <span class="amber-text">Per Kill: <b>5 Coins</b></span>
+                </div>
+                <button class="btn bg-amber" style="width: 100%; padding: 10px;" onclick="alert('Registration opening soon!')">Join Match</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <h3>Lone Wolf 1v1</h3>
+                <p>Show your solo skills and dominate the map in survival grid.</p>
+                <div class="match-details">
+                    <span>Entry Fee: <b>20 Coins</b></span>
+                    <span class="amber-text">Prize: <b>150 Coins</b></span>
+                </div>
+                <button class="btn bg-amber" style="width: 100%; padding: 10px;" onclick="alert('Registration opening soon!')">Join Match</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="section">
+        <h2 class="section-title">Top Players Leaderboard</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>In-Game Name (IGN)</th>
+                    <th>Matches Played</th>
+                    <th>Total Earnings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🥇 1</td>
+                    <td>Zalim_Khan</td>
+                    <td>42</td>
+                    <td class="amber-text">850 Coins</td>
+                </tr>
+                <tr>
+                    <td>🥈 2</td>
+                    <td>Pro_Ahmad</td>
+                    <td>35</td>
+                    <td class="amber-text">620 Coins</td>
+                </tr>
+                <tr>
+                    <td>🥉 3</td>
+                    <td>Mafia_King</td>
+                    <td>29</td>
+                    <td class="amber-text">490 Coins</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="section" style="text-align: center;">
+        <h2 class="section-title">Need Help & Support?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 25px;">Agar aap ko account, deposit, ya room ID ke mutalik koi sawal poochna hai, to hamari support team se rabta karein.</p>
+        <p style="font-size: 18px; margin-bottom: 30px;">💬 Official JazzCash / Helpline Number:<br><b class="amber-text" style="font-size: 24px;">03056009473</b></p>
+        <a href="mailto:support@tournament.pk" class="btn btn-outline">Contact Via Email</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Tournament.pk. All Rights Reserved. Designed for Pakistani Gamers.</p>
+    </footer>
+
+</body>
+</html>
